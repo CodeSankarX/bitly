@@ -1,21 +1,43 @@
+# Git
 .git
 .github
 .gitignore
+
+# IDE
 .idea
 .vscode
+**/*.iml
+**/.DS_Store
+
+# Gradle
 .gradle
-build
-out
-target
-node_modules
+**/build/
+out/
+target/
+
+# Node.js
+node_modules/
+
+# Docker
 Dockerfile
 docker-compose.yml
 docker-compose.yaml
 compose.yml
 compose.yaml
+
+# Documentation
 README.md
 HELP.md
+
+# Environment files
 .env
 .env.*
-**/*.iml
-**/.DS_Store
+
+# Keep application source and Gradle files
+!src/
+!src/**
+!gradle/
+!gradle/**
+!gradlew
+!build.gradle
+!settings.gradle
