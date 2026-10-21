@@ -14,6 +14,21 @@ spring:
     properties:
       hibernate:
         format_sql: ${JPA_FORMAT_SQL}
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Ov23liLD3xXu7HY7rjHH
+            client-secret: d76bbcda43f7b16bd24c40fca4caca06b38da6d5
+            scope: read:user
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          github:
+            authorization-uri: https://github.com/login/oauth/authorize
+            token-uri: https://github.com/login/oauth/access_token
+            user-info-uri: https://api.github.com/user
+            user-name-attribute: login
 
   data:
     redis:
