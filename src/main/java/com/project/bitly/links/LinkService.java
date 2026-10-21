@@ -1,5 +1,6 @@
 package com.project.bitly.links;
 
+import com.project.bitly.config.UserService;
 import com.project.bitly.exception.LinkException;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -20,6 +21,9 @@ public class LinkService implements LinkServiceImpl {
 
     @Autowired
     private RedisTemplate<String, String> linkRedisTemplate;
+
+    @Autowired
+    private UserService userService;
 
     public LinkService(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -42,7 +46,7 @@ public class LinkService implements LinkServiceImpl {
         if (maxRetries <= 0) {
             return null;
         }
-        Link link = new Link(id, url, shortCode, null);
+        Link link = new Link(id, url, shortCode, null, userService.getUser());
         entityManager.persist(link);
         linkRedisTemplate.opsForValue().set(shortCode, link.getUrl());
         linkRedisTemplate.opsForValue().set(url, shortCode);

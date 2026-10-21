@@ -22,13 +22,6 @@ public class LinkController {
         return ResponseEntity.ok(Model.ShortLinkResponse.Mapper(link));
     }
 
-    @GetMapping("/{url}")
-    public ResponseEntity<Object> getShortLink(@PathVariable("url") String url) {
-        String fullUrl=linkServiceImpl.fullUrl(url);
-        return ResponseEntity.status(HttpStatus.FOUND)
-                .location(URI.create(fullUrl))
-                .build();
-    }
 
     @GetMapping
     public ResponseEntity<Model.ShortLinkResponse> getShortLinkObject(@RequestParam("url") String url) {
