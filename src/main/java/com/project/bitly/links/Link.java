@@ -1,10 +1,12 @@
 package com.project.bitly.links;
 
 import com.project.bitly.user.AppUser;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.UUID;
 
@@ -27,6 +29,6 @@ public class Link {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     AppUser user;
 }
