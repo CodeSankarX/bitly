@@ -19,8 +19,8 @@ spring:
       client:
         registration:
           github:
-            client-id: Ov23liLD3xXu7HY7rjHH
-            client-secret: d76bbcda43f7b16bd24c40fca4caca06b38da6d5
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
             scope: read:user
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
